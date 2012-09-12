@@ -28,6 +28,7 @@ if [ $carac -gt 0 ] ; then
         if [ $freespace -gt $limiteespacio ] ; then
                 subject="Espacio límite alcanzado en  $(hostname)"
                 message="Se está ocupando el  $freespace  %"
+                #depende de la versión del mail es o no necesario usar el modificador -c. Si falla, quitarlo
                 echo $message  |  /bin/mail -s "$subject" "$emailavisos" -c "$emailavisoscopia"
 
         fi
