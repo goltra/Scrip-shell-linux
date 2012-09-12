@@ -2,6 +2,7 @@
 
 ### PARAMETROS / CONFIGURACION ###
 emailavisos="aaa@gmail.com"
+emailavisoscopia="copia@gmail.com"
 limiteespacio=90
 limitecolaemails=100
 ### FIN PARAMETROS / CONFIGURACION ###
@@ -27,7 +28,7 @@ if [ $carac -gt 0 ] ; then
         if [ $freespace -gt $limiteespacio ] ; then
                 subject="Espacio límite alcanzado en  $(hostname)"
                 message="Se está ocupando el  $freespace  %"
-                echo $message  |  /bin/mail -s "$subject" "$emailavisos"
+                echo $message  |  /bin/mail -s "$subject" "$emailavisos" -c "$emailavisoscopia"
 
         fi
 
@@ -42,7 +43,7 @@ echo "Correos en Cola: " $queue
 if [ $queue -gt $limitecolaemails ] ; then
               subject="Muchos correos en la cola de  $(hostname)"
               message="Hay un total de   $queue  correos"
-              echo $message  |  /bin/mail -s "$subject" "$emailavisos"
+              echo $message  |  /bin/mail -s "$subject" "$emailavisos" -c "$emailavisoscopia"
 fi
 
 ### FIN OBTENER CORREOS EN COLA ###
